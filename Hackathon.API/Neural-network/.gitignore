@@ -1,0 +1,30 @@
+# Игнорировать папку .idea (настройки IDE)
+.idea/
+
+# Игнорировать системные файлы macOS
+.DS_Store
+
+# Вы также можете добавить другие файлы или папки, которые вы не хотите отслеживать Git-ом
+# Например:
+node_modules/
+venv/
+*.log
+*.pyc
+__pycache__/
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/workspace.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/hakaton.iml
+.idea/hakaton.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+.idea/hakaton.iml
+.idea/modules.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/hakaton.iml
