@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.API", "Hackathon.API\Hackathon.API.csproj", "{47FE1726-3FBB-414F-B6DE-550A65250CF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Persistence", "Hackathon.Persistence\Hackathon.Persistence.csproj", "{0997AD7A-C744-46DD-8D06-CA6A1BC292A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{194CAA0F-82CA-4EC6-BCB9-B800BC605EC8}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47FE1726-3FBB-414F-B6DE-550A65250CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FE1726-3FBB-414F-B6DE-550A65250CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FE1726-3FBB-414F-B6DE-550A65250CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FE1726-3FBB-414F-B6DE-550A65250CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0997AD7A-C744-46DD-8D06-CA6A1BC292A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0997AD7A-C744-46DD-8D06-CA6A1BC292A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0997AD7A-C744-46DD-8D06-CA6A1BC292A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0997AD7A-C744-46DD-8D06-CA6A1BC292A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
