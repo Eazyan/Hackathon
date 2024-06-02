@@ -33,7 +33,7 @@ function App() {
               </>
             ))}
             <MessageBox mode="Bot">
-              <MarkdownConverter markdown="**Общая информация**\n\nКлиенты банка Тинькофф  могут открыть различные виды счетов и вкладов, связанные с их зарплатными картами. Это включает в себя возможность создания накопительного счета и вклада на карте Tinkoff Black. Накопительные счета и вклады доступны в российских рублях (RUB) и других поддерживаемых валютах.\n\n**Ссылки на дополнительную информацию**\n\n1. [https://www.tinkoff.ru/business/help/business-payout/salary/about/issue-cards/?card=q3](https://www.tinkoff.ru/business/help/business-payout/salary/about/issue-cards/?card=q3)\n2. [URL для дополнительных данных]" />
+              <MarkdownConverter markdown="Здравствуйте! Я финансовый бот Тинькофф Помощь для Бизнеса. Чем могу помочь?" />
             </MessageBox>
           </Blank>
           <div className='InputArea'>
