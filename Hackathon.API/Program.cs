@@ -1,3 +1,4 @@
+using Hackathon.API.Endpoints;
 using Hackathon.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,5 +25,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapUserEndpoints();
 app.UseHttpsRedirection();
 app.Run();

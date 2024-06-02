@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import pymorphy3
+import sys
 import json
 from model import generate_answer
 
@@ -76,7 +77,8 @@ def get_answers(user_question, extra_threshold=0.01, max_answers=7):
     closest_indices = find_closest_questions(user_question, extra_threshold)
     return [lemmatized_questions[idx]["question"] for idx in closest_indices[:max_answers]]
 # Пример использования
-def answer(user_question: str) -> None:
+def answer() -> None:
+    user_question = sys.argv[1]
     answers = get_answers(user_question, extra_threshold=0.095)
     print(f"Вопрос: {user_question}\nОтветы:")
 
