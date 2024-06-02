@@ -19,7 +19,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ markdown }) => {
 }
 
   // Заменяем символы \n на <br /> для корректного отображения переносов строк
-  let formattedMarkdown = markdown.replace(/\\n/g, '\n');
+  let formattedMarkdown = markdown.replace(/\\n\\n/g, ' \n' ).replace(/\\n/g, ' \n');
   formattedMarkdown = replaceUrlsWithLinks(formattedMarkdown);
   console.log(formattedMarkdown);
 

@@ -51,7 +51,7 @@ public static class QuestionEndpoint
         var answer = JsonConvert.DeserializeObject<Query>(responseString);
 
         Console.WriteLine(query);
-        Console.WriteLine(answer);
+        Console.WriteLine(responseString);
 
         return Results.Ok(answer);
     }
