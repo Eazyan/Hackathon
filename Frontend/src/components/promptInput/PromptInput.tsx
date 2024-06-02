@@ -11,15 +11,15 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 import "./PromptInput.css";
 
 const PromptInput: React.FC = () => {
-  const [text, setText] = useState<Question>({ query: "" });
+  const [text, setText] = useState<string>("");
   const [isBotResponding, setIsBotResponding] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (text.query.trim() !== "" && !isBotResponding) {
+    if (text.trim() !== "" && !isBotResponding) {
       setIsBotResponding(true);
       try {
-        await dispatch(addUserResponseToHistory(text.query));
+        await dispatch(addUserResponseToHistory(text));
         const response = await question(text);
         await dispatch(addBotResponseToHistory(response.query)); // Предполагаем, что response.query - это ответ бота
       } catch (error) {
@@ -27,7 +27,7 @@ const PromptInput: React.FC = () => {
       } finally {
         setIsBotResponding(false);
       }
-      setText({ query: "" });
+      setText("");
     }
   };
 
@@ -42,15 +42,15 @@ const PromptInput: React.FC = () => {
     <form className="form" onSubmit={handleSubmit}>
       <textarea
         placeholder="Введите сообщение"
-        value={text.query}
+        value={text}
         className="PromptInput"
-        onChange={(e) => setText({ query: e.target.value })}
+        onChange={(e) => setText( e.target.value)}
         onKeyDown={handleKeyPress}
         rows={1}
         disabled={isBotResponding}
       />
       {!isBotResponding ? (
-        <SubmitButton disabled={!text.query.trim() || isBotResponding} />
+        <SubmitButton disabled={!text.trim() || isBotResponding} />
       ) : (
         <Spinner />
       )}
