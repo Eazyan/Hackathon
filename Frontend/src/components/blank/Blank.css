@@ -1,0 +1,20 @@
+.blank {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    background-color: white;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.03);
+    width: 47vw;
+    min-width: 400px;
+    max-width: 900px;
+    height: 81.2vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.blank::-webkit-scrollbar {
+    width: 0;
+}

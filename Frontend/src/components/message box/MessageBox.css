@@ -1,0 +1,47 @@
+.Bot{
+    display: block;
+    flex-direction: column;
+    width: fit-content;
+    max-width: 80%;
+    font-size: 15px;
+    height: fit-content;
+    align-content: center;
+    background-color: #ffdc2dbb;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    margin: 0.3em;
+    border: 1px solid #eaecee;
+    border-radius: 1em;
+    padding: 15px;
+    align-self: flex-start;
+    word-wrap: break-word;
+}
+
+.Bot p, .Bot span, .User p, .User span {
+    display: inline; /* Используйте inline вместо block */
+    width: auto; /* Убедитесь, что ширина не занимает всю ширину родителя */
+    white-space: normal;
+    margin-bottom: 1em; /* Разрешите перенос текста на новую строку */
+}
+
+.Bot ul, .Bot ol {
+    list-style-position: inside; /* Маркеры будут находиться внутри текста */
+    padding-left: 5px; /* Примерное значение отступа */
+  }
+
+.Bot :is(h1, h2, h3, h4, h5, h6) {
+    font-size: 15px;
+}
+
+.User{
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+    margin: 0.3em;
+    max-width: 80%;
+    border-radius: 1em;
+    padding: 15px;
+    align-self: flex-end;
+    word-wrap: break-word; /* Добавляем это свойство */
+}

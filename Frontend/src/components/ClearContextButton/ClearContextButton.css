@@ -1,0 +1,22 @@
+.clearContextButton {
+    width: 3.5vw;
+    padding: 10px;
+    border-radius: 1em;
+    color: #00000079;
+    background-color: white;
+    border: 1px solid #00000079;
+    transition: all 0.2s ease-in-out;
+    margin-left: 0.5vw;
+    min-width: 50px;
+}
+
+.clearContextButton:hover,
+.clearContextButton:focus {
+    border-color: #ffdd2d;
+    color: #ffdd2d;
+}
+
+.clearContextButton:active {
+    border-color: #00000079;
+    color: #00000079;
+}

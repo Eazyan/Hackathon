@@ -1,0 +1,24 @@
+.submitButton {
+  position: absolute;
+  padding: 0;
+  transform: scale(1.4);
+  border: none;
+  /*text-transform: uppercase;*/
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0);
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.submitButton:hover {
+  scale: 1.03;
+  opacity: 60%;
+}
+
+.submitButton:active {
+  scale: 1.04;
+}
+
+.submitButton:focus {
+  outline: none;
+}
