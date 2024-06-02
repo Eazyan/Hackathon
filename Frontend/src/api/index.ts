@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export const $host = axios.create({
-    baseURL: 'https://ngrok.com/r/ti'
+    baseURL: 'http://dd2a-77-34-171-135.ngrok-free.app'
 })
