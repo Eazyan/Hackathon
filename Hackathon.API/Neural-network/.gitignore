@@ -28,3 +28,5 @@ __pycache__/
 .idea/modules.xml
 .idea/misc.xml
 .idea/hakaton.iml
+myenv/
+env/

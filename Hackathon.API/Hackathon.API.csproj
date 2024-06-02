@@ -16,6 +16,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="python" Version="3.13.0-b1" />
         <PackageReference Include="pythonnet" Version="3.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />

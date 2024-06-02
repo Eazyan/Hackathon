@@ -35,7 +35,7 @@ def get_fields_by_title(json_data, title):
             }
     return None
 
-json_file_path = './data-base/dataset.json'
+json_file_path = './data-set/dataset.json'
 
 with open(json_file_path, 'r', encoding='utf-8') as file:
     dataset = json.load(file)
@@ -77,8 +77,8 @@ def get_answers(user_question, extra_threshold=0.01, max_answers=7):
     closest_indices = find_closest_questions(user_question, extra_threshold)
     return [lemmatized_questions[idx]["question"] for idx in closest_indices[:max_answers]]
 # Пример использования
-def answer() -> None:
-    user_question = sys.argv[1]
+def answer(query) -> None:
+    user_question = query
     answers = get_answers(user_question, extra_threshold=0.095)
     print(f"Вопрос: {user_question}\nОтветы:")
 

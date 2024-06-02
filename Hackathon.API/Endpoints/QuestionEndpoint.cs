@@ -2,9 +2,9 @@ using Hackathon.Persistence;
 using Hackathon.Persistence.Entities;
 namespace Hackathon.API.Endpoints;
 using System;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
+using System.Net.Http.Json;
+using System.Text;
+using Newtonsoft.Json;
 
 public static class QuestionEndpoint 
 {
@@ -18,6 +18,10 @@ public static class QuestionEndpoint
     
     public static async Task<IResult> AnswerQuestion(string query, HackathonDbContext context)
     {
+        HttpClient httpClient = new HttpClient();  
+
+        httpClient.Timeout = TimeSpan.FromMinutes(10);
+
         try
         {
             Validation.Validation.ValidatePrompt(query);
@@ -36,92 +40,24 @@ public static class QuestionEndpoint
                 });
         await context.SaveChangesAsync();
 
-        try
-        {
-            string pythonScriptPath = FindPythonScript("Neural-network", "classification.py");
-            string pythonInterpreterPath = FindPythonInterpreter("PythonApplication", "myenv", "Scripts", "python.exe");
+        var payload = new { query = query };
 
-            ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = pythonInterpreterPath;
-            start.Arguments = $"{pythonScriptPath} {query}";
-            start.WorkingDirectory = Path.GetDirectoryName(pythonScriptPath);
-            start.UseShellExecute = false;
-            start.RedirectStandardOutput = true;
-            start.RedirectStandardError = true; // Захват стандартного вывода ошибок
-            start.CreateNoWindow = true;
-            
-            using (Process process = Process.Start(start))
-            {
-                using (StreamReader reader = process.StandardOutput)
-                {
-                    string result = reader.ReadToEnd();
-                    return Results.Ok(result);
-                }
-            }
-        }
-        catch(Exception e)
-        {
-            throw e;
-        }
-        
-        return Results.Accepted();
+        var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+
+        var response = await httpClient.PostAsync("http://localhost:8000/assist", content);
+
+        var responseString = await response.Content.ReadAsStringAsync();
+
+        var answer = JsonConvert.DeserializeObject<Query>(responseString);
+
+        Console.WriteLine(query);
+        Console.WriteLine(answer);
+
+        return Results.Ok(answer);
     }
+}
 
-    static string FindPythonScript(string directory, string scriptName)
-    {
-        return FindFile(directory, scriptName);
-    }
-
-    static string FindPythonInterpreter(string directory, string venvDirectory, string scriptsDirectory, string pythonExe)
-    {
-        return FindFile(directory, Path.Combine(venvDirectory, scriptsDirectory, pythonExe));
-    }
-
-    static string FindFile(string directory, string fileName)
-    {
-        // Получение начального каталога сборки
-        string currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-        while (currentDirectory != null)
-        {
-            string foundPath = SearchDirectory(currentDirectory, directory, fileName);
-            if (foundPath != null)
-            {
-                return foundPath;
-            }
-
-            // Переход в родительский каталог
-            currentDirectory = Directory.GetParent(currentDirectory)?.FullName;
-        }
-
-        // Если файл не найден, вернуть null
-        return null;
-    }
-
-    static string SearchDirectory(string baseDirectory, string targetDirectory, string fileName)
-    {
-        // Получение полного пути к целевой директории
-        string targetPath = Path.Combine(baseDirectory, targetDirectory);
-
-        if (Directory.Exists(targetPath))
-        {
-            string filePath = Path.Combine(targetPath, fileName);
-            if (File.Exists(filePath))
-            {
-                return filePath;
-            }
-
-            // Рекурсивный поиск в подкаталогах
-            foreach (string subDirectory in Directory.GetDirectories(targetPath))
-            {
-                string foundPath = SearchDirectory(subDirectory, string.Empty, fileName);
-                if (foundPath != null)
-                {
-                    return foundPath;
-                }
-            }
-        }
-
-        return null;
-    }
+public class Query
+{
+    public string query { get; set; }
 }

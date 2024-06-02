@@ -11,6 +11,20 @@ services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 services.AddEndpointsApiExplorer();
 
+services.AddCors(
+    options => 
+    {
+        options.AddDefaultPolicy(
+            builder => 
+            {
+                builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+            }
+        );
+    }
+);
+
 services.AddDbContext<HackathonDbContext>(
     options =>
     {
@@ -25,6 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.MapUserEndpoints();
 app.UseHttpsRedirection();
 app.Run();
