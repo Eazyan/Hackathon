@@ -12,14 +12,19 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ markdown }) => {
   }
 
   function replaceUrlsWithLinks(text: string): string {
-    const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
+    // Регулярное выражение для поиска URL-адресов
+    const urlRegex = /(https?:\/\/(?:www\.|(?!www))[а-яА-ЯёЁa-zA-Z0-9][а-яА-ЯёЁa-zA-Z0-9-]+[а-яА-ЯёЁa-zA-Z0-9]\.[^\s]{2,}|www\.[а-яА-ЯёЁa-zA-Z0-9][а-яА-ЯёЁa-zA-Z0-9-]+[а-яА-ЯёЁa-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[а-яА-ЯёЁa-zA-Z0-9]+\.[^\s]{2,}|www\.[а-яА-ЯёЁa-zA-Z0-9]+\.[^\s]{2,})/g;
+
+    // Замена существующих ссылок на пустую строку, чтобы избежать дублирования
+    text = text.replace(/[\[\]\(\)]/g, "");
+
+    // Замена URL-адресов на ссылки в формате Markdown
     return text.replace(urlRegex, (url) => {
         return `[${url}](${url})`;
     });
 }
-
   // Заменяем символы \n на <br /> для корректного отображения переносов строк
-  let formattedMarkdown = markdown.replace(/\\n\\n/g, ' \n' ).replace(/\\n/g, ' \n');
+  let formattedMarkdown = markdown.replace(/\\n\\n/g, '  \n' ).replace(/\\n/g, '  \n');
   formattedMarkdown = replaceUrlsWithLinks(formattedMarkdown);
   console.log(formattedMarkdown);
 
